@@ -1,5 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
+from django.urls import reverse
+
 # Create your tests here.
 
 
@@ -33,3 +35,22 @@ class CustomUserTests(TestCase):
 
         self.assertTrue(admin_user.is_active)
         self.assertTrue(admin_user.is_superuser)
+
+
+class SignUpTests(TestCase):
+
+    def test_signup(self):
+        response = self.client.get('/signup/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_signup_url_name(self):
+        response = self.client.get(reverse('signup'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_signup_template_used(self):
+        response = self.client.get('/signup/')
+        self.assertTemplateUsed(response, 'signup.html')
+
+    def test_signup_html(self):
+        response = self.client.get('/signup/')
+        self.assertContains(response, 'Sign Up for an Account')
