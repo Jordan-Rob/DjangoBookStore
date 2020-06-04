@@ -1,4 +1,10 @@
 {% extends '_base.html' %} {% block title %} BookStore-Home {% endblock title %}
-{% block content %}
+{% block content %} {% if user.is_authenticated %}
+<h3>Welcome {{ user.username }}</h3>
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<h3>You aren't logged in please do</h3>
+<a href="{% url 'login'  %}">Log In</a>
+{% endif %}
 <h1>Home Page</h1>
 {% endblock content %}
