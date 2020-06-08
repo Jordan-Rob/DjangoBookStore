@@ -7,11 +7,11 @@
 {% block content %}
 {% if user.is_authenticated %}
 <h3>Welcome {{ user.username }}</h3>
-<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'account_logout' %}">Logout</a>
 {% else %}
 <h3>You aren't logged in please do</h3>
-<a href="{% url 'login'  %}">Log In</a>
-<p>Don't have an account? sign up <a href="{% url 'signup' %}">here</a></p>
+<a href="{% url 'account_login'  %}">Log In</a>
+<p>Don't have an account? sign up <a href="{% url 'account_signup' %}">here</a></p>
 {% endif %}
 <h1>Home Page</h1>
 <img class="bookcover" src="{% static 'images/djangoforprofessionals.jpg' %}" alt="book cover" />
