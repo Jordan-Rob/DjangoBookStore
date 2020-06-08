@@ -1,8 +1,11 @@
-{% extends '_base.html' %} {% block title %}BookStore-SignUp{% endblock title %}
+{% extends '_base.html' %}
+
+{% load crispy_forms_tags %}
+{% block title %}BookStore-SignUp{% endblock title %}
 {% block content %}
 <h2>Sign Up for an Account</h2>
 <form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Sign Up</button>
+  {% csrf_token %} {{ form|crispy }}
+  <button class="btn btn-success" type="submit">Sign Up</button>
 </form>
 {% endblock content %}
