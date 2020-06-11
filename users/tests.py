@@ -54,3 +54,16 @@ class SignUpTests(TestCase):
     def test_signup_html(self):
         response = self.client.get('/signup/')
         self.assertContains(response, 'Sign Up for an Account')
+
+
+class SignUpFormTests(Testcase):
+    def test_user_signup(self):
+        new_user = get_user_model().objects.create_user(
+            username='kolio',
+            email='kolio@kolio.com',
+            password='kolio'
+        )
+
+        self.assertEqual(new_user.username, 'kolio')
+        self.assertEqual(new_user.email, 'kolio@kolio.com')
+        self.assertEqual(get_user_model().objects.all().count(), 1)
